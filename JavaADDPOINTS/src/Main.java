@@ -12,6 +12,14 @@ public class Main {
             XMLBuilder xmlBuilder = new XMLBuilder(root);
             xmlBuilder.setXmlDeclaration("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 
+            XMLNode child1 = new XMLNode("child1");
+            child1.addAttribute("name", "Alice");
+            root.addChild(child1);
+
+            XMLNode child2 = new XMLNode("child2");
+            child2.addAttribute("name", "Bob");
+            root.addChild(child2);
+
             xmlBuilder.toFile("example.xml");
             System.out.println("XML файл успешно создан.");
         } catch (XMLBuilder.XMLException e) {

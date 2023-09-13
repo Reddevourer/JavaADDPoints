@@ -8,6 +8,7 @@ public class XMLNode {
     private String content;
     private Map<String, String> attributes = new HashMap<>();
     private List<XMLNode> children = new ArrayList<>();
+    private XMLNode parent;
 
     public XMLNode(String name) {
         this.name = name;
@@ -19,6 +20,8 @@ public class XMLNode {
     }
 
     public XMLNode addChild(XMLNode child) {
+
+        child.setParent(this);
         children.add(child);
         return this;
     }
@@ -26,6 +29,47 @@ public class XMLNode {
     public XMLNode setContent(String content) {
         this.content = content;
         return this;
+    }
+
+    public void removeAttribute(String name) {
+        attributes.remove(name);
+    }
+
+    public void removeChild(XMLNode child) {
+        children.remove(child);
+        child.setParent(null);
+    }
+
+    public void addContent(String content) {
+
+        this.content = content;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<XMLNode> getChildren() {
+        return children;
+    }
+
+    public XMLNode getParent() {
+        return parent;
+    }
+
+    private void setParent(XMLNode parent) {
+        this.parent = parent;
+    }
+
+    private boolean isDescendantOf(XMLNode potentialParent) {
+        XMLNode currentNode = this;
+        while (currentNode != null) {
+            if (currentNode == potentialParent) {
+                return true;
+            }
+            currentNode = currentNode.getParent();
+        }
+        return false;
     }
 
     @Override

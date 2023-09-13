@@ -102,8 +102,46 @@ class XMLBuilder {
             this.cdataContent = cdataContent;
         }
 
+        public static void removeAttribute(XMLNode node, String attributeName) {
+            node.removeAttribute(attributeName);
+        }
+
+        public static void removeChild(XMLNode node, XMLNode childNode) {
+            node.removeChild(childNode);
+        }
+
+        public static void addContent(XMLNode node, String content) {
+            node.addContent(content);
+        }
+
         public String toString() {
             return "<" + name + "><![CDATA[" + cdataContent + "]]></" + name + ">";
         }
     }
 }
+
+
+
+
+
+/* Пересиал на стримы 
+public void toFile(OutputStream outputStream) throws XMLException {
+    try (OutputStreamWriter writer = new OutputStreamWriter(outputStream)) {
+        writer.write(xmlDeclaration + "\n");
+        writer.write("<" + rootElement);
+
+        for (Map.Entry<String, String> entry : attributes.entrySet()) {
+            writer.write(" " + entry.getKey() + "=\"" + escapeXml(entry.getValue()) + "\"");
+        }
+
+        writer.write(">");
+        for (Object child : children) {
+            writer.write(child.toString());
+        }
+
+        writer.write("</" + rootElement + ">");
+    } catch (IOException e) {
+        throw new XMLException("Ошибка при записи XML данных в поток.", e);
+    }
+}
+ */
