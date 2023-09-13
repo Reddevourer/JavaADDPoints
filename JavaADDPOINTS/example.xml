@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<root encoding="UTF-8" version="1.0"><person id="1">John Doe</person><age>30</age><comments>This is &lt;![CDATA[some &lt;CDATA&gt; content]]&gt;.</comments></root>></<root encoding="UTF-8" version="1.0"><person id="1">John Doe</person><age>30</age><comments>This is &lt;![CDATA[some &lt;CDATA&gt; content]]&gt;.</comments></root>>
